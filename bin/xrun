@@ -1,0 +1,23 @@
+#!/bin/bash -eu
+# xrun
+# Create git and push it to github
+#
+# Before running
+#   - Create reposity in github
+#   - cd /foo/xd
+
+cp index.html README.md
+
+user=mtcarrasco
+repo=xd
+
+curl -u "$user:$token" https://api.github.com/user/repos -d '{"name":"'$repo'"}'
+git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/$user/$repo.git
+git push -u origin master
+exit 0
+
+#https://viget.com/extend/create-a-github-repo-from-the-command-line
+##
